@@ -1,0 +1,12 @@
+# Credenciais e configuração local
+config.php
+
+
+# Arquivos do sistema e editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Logs
+*.log
