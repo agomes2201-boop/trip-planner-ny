@@ -1,6 +1,3 @@
-CREATE DATABASE IF NOT EXISTS trip_planner_ny;
-USE trip_planner_ny;
-
 CREATE TABLE cities (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(120) NOT NULL,

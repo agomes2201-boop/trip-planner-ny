@@ -65,7 +65,7 @@ function linkButton(?string $url, string $label): string {
 ">
   <div>
     <p class="eyebrow">Planejador de viagem</p>
-    <h1>EUROPA · OUTUBRO 2026</h1>
+    <h1>NEW YORK · Junho 2027</h1>
   </div>
   <div class="countdown" aria-label="Contagem regressiva">
     <strong id="days">—</strong><span>dias para a viagem</span>
