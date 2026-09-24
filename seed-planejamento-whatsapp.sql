@@ -67,12 +67,12 @@ UPDATE attractions SET attraction_date='2026-10-15' WHERE name IN ('Top of Innsb
 UPDATE attractions SET attraction_date='2026-10-16' WHERE name='Centro histórico de Ljubljana';
 UPDATE attractions SET attraction_date='2026-10-17' WHERE name='Lago Bled ao pôr do sol';
 
--- Orçamentos diários do casal, em euros, marcados como previsão.
-INSERT INTO expenses(city_id,name,category,amount_eur,expense_date,status,notes) SELECT id,'Orçamento do dia 08','Outros',70,'2026-10-08','planned','Chegada, alimentação e compras; FlixBus já comprado fora deste valor.' FROM cities WHERE name='Dobbiaco';
-INSERT INTO expenses(city_id,name,category,amount_eur,expense_date,status,notes) SELECT id,'Orçamento do dia 09','Outros',55,'2026-10-09','planned','Misurina e Lago di Landro; transportes regionais previstos com Guest Pass.' FROM cities WHERE name='Dobbiaco';
-INSERT INTO expenses(city_id,name,category,amount_eur,expense_date,status,notes) SELECT id,'Orçamento do dia 10','Outros',40,'2026-10-10','planned','Braies e Lago di Dobbiaco.' FROM cities WHERE name='Dobbiaco';
-INSERT INTO expenses(city_id,name,category,amount_eur,expense_date,status,notes) SELECT id,'Orçamento do dia 11','Outros',75,'2026-10-11','planned','Bolzano e Carezza; hospedagem não incluída.' FROM cities WHERE name='Bolzano';
-INSERT INTO expenses(city_id,name,category,amount_eur,expense_date,status,notes) SELECT id,'Orçamento do dia 12','Outros',85,'2026-10-12','planned','Chegada e passeio em Tirano; passagens já compradas fora do valor.' FROM cities WHERE name='Tirano';
-INSERT INTO expenses(city_id,name,category,amount_eur,expense_date,status,notes) SELECT id,'Orçamento local do dia 15','Outros',187,'2026-10-15','planned','Alimentação e Top of Innsbruck; trem em reais não convertido.' FROM cities WHERE name='Innsbruck';
-INSERT INTO expenses(city_id,name,category,amount_eur,expense_date,status,notes) SELECT id,'Orçamento local do dia 16','Outros',75,'2026-10-16','planned','Despesas locais; trem em reais e hospedagem já paga não incluídos.' FROM cities WHERE name='Ljubljana';
-INSERT INTO expenses(city_id,name,category,amount_eur,expense_date,status,notes) SELECT id,'Orçamento do dia 17','Outros',140,'2026-10-17','planned','Ljubljana e Bled; valor de segurança para o casal.' FROM cities WHERE name='Ljubljana';
+-- Orçamentos diários do casal, em dólares, marcados como previsão.
+INSERT INTO expenses(city_id,name,category,amount_usd,expense_date,status,notes) SELECT id,'Orçamento do dia 08','Outros',70,'2026-10-08','planned','Chegada, alimentação e compras; FlixBus já comprado fora deste valor.' FROM cities WHERE name='Dobbiaco';
+INSERT INTO expenses(city_id,name,category,amount_usd,expense_date,status,notes) SELECT id,'Orçamento do dia 09','Outros',55,'2026-10-09','planned','Misurina e Lago di Landro; transportes regionais previstos com Guest Pass.' FROM cities WHERE name='Dobbiaco';
+INSERT INTO expenses(city_id,name,category,amount_usd,expense_date,status,notes) SELECT id,'Orçamento do dia 10','Outros',40,'2026-10-10','planned','Braies e Lago di Dobbiaco.' FROM cities WHERE name='Dobbiaco';
+INSERT INTO expenses(city_id,name,category,amount_usd,expense_date,status,notes) SELECT id,'Orçamento do dia 11','Outros',75,'2026-10-11','planned','Bolzano e Carezza; hospedagem não incluída.' FROM cities WHERE name='Bolzano';
+INSERT INTO expenses(city_id,name,category,amount_usd,expense_date,status,notes) SELECT id,'Orçamento do dia 12','Outros',85,'2026-10-12','planned','Chegada e passeio em Tirano; passagens já compradas fora do valor.' FROM cities WHERE name='Tirano';
+INSERT INTO expenses(city_id,name,category,amount_usd,expense_date,status,notes) SELECT id,'Orçamento local do dia 15','Outros',187,'2026-10-15','planned','Alimentação e Top of Innsbruck; trem em reais não convertido.' FROM cities WHERE name='Innsbruck';
+INSERT INTO expenses(city_id,name,category,amount_usd,expense_date,status,notes) SELECT id,'Orçamento local do dia 16','Outros',75,'2026-10-16','planned','Despesas locais; trem em reais e hospedagem já paga não incluídos.' FROM cities WHERE name='Ljubljana';
+INSERT INTO expenses(city_id,name,category,amount_usd,expense_date,status,notes) SELECT id,'Orçamento do dia 17','Outros',140,'2026-10-17','planned','Ljubljana e Bled; valor de segurança para o casal.' FROM cities WHERE name='Ljubljana';

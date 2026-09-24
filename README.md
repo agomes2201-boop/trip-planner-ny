@@ -18,7 +18,7 @@ Se a versão 2 já estiver instalada, importe também `upgrade-v3.sql`. Essa atu
 
 ## Dados extraídos do planejamento do WhatsApp
 
-Depois de criar ou atualizar o banco, importe `seed-planejamento-whatsapp.sql` uma única vez. Ele adiciona cidades, passeios, dicas, linhas de ônibus, horários indicativos e estimativas diárias. Os valores entram como **Previstos**, não como pagamentos realizados.
+Depois de criar ou atualizar o banco, importe `seed-planejamento-whatsapp.sql` uma única vez. Ele adiciona cidades, passeios, dicas, linhas de ônibus, horários indicativos e estimativas diárias em dólar. Os valores entram como **Previstos**, não como pagamentos realizados.
 
 ## Novidades
 

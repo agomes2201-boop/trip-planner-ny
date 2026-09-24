@@ -34,9 +34,9 @@ if ($selected) {
     $stmt->execute([$selected['id']]);
     $expenses = $stmt->fetchAll();
 }
-$tripTotal = (float)$pdo->query("SELECT COALESCE(SUM(amount_eur), 0) FROM expenses WHERE status='paid'")->fetchColumn();
-$plannedTotal = (float)$pdo->query("SELECT COALESCE(SUM(amount_eur), 0) FROM expenses WHERE status='planned'")->fetchColumn();
-$expenseSummary = $pdo->query("SELECT category, SUM(amount_eur) total FROM expenses WHERE status='paid' GROUP BY category ORDER BY total DESC")->fetchAll();
+$tripTotal = (float)$pdo->query("SELECT COALESCE(SUM(amount_usd), 0) FROM expenses WHERE status='paid'")->fetchColumn();
+$plannedTotal = (float)$pdo->query("SELECT COALESCE(SUM(amount_usd), 0) FROM expenses WHERE status='planned'")->fetchColumn();
+$expenseSummary = $pdo->query("SELECT category, SUM(amount_usd) total FROM expenses WHERE status='paid' GROUP BY category ORDER BY total DESC")->fetchAll();
 
 function h(?string $value): string { return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8'); }
 function dateBr(?string $date): string { return $date ? date('d/m/Y', strtotime($date)) : 'A definir'; }
@@ -132,7 +132,7 @@ function linkButton(?string $url, string $label): string {
       <?php foreach ($attractions as $item): ?><article class="attraction-card <?= $item['completed'] ? 'completed' : '' ?>">
         <form class="check-form" method="post"><input type="hidden" name="csrf" value="<?= h($_SESSION['csrf']) ?>"><input type="hidden" name="action" value="toggle_attraction"><input type="hidden" name="city_id" value="<?= (int)$selected['id'] ?>"><input type="hidden" name="attraction_id" value="<?= (int)$item['id'] ?>"><label><input type="checkbox" <?= $item['completed'] ? 'checked' : '' ?> onchange="this.form.submit()"><span><?= $item['completed'] ? 'Realizado' : 'Marcar como realizado' ?></span></label></form>
         <span class="pin">◎</span><h3><?= h($item['name']) ?></h3>
-        <div class="attraction-meta"><span>📅 <?= dateBr($item['attraction_date']) ?></span><?php if ((float)$item['amount_eur'] > 0): ?><strong>€ <?= number_format((float)$item['amount_eur'], 2, ',', '.') ?></strong><?php endif; ?></div>
+        <div class="attraction-meta"><span>📅 <?= dateBr($item['attraction_date']) ?></span><?php if ((float)$item['amount_usd'] > 0): ?><strong>$ <?= number_format((float)$item['amount_usd'], 2, '.', ',') ?></strong><?php endif; ?></div>
         <p><?= nl2br(h($item['description'])) ?></p>
         <?= linkButton($item['maps_url'], 'Abrir trajeto no Maps') ?>
       </article><?php endforeach; ?>
@@ -142,12 +142,12 @@ function linkButton(?string $url, string $label): string {
   <section class="content-card" id="gastos">
     <div class="section-heading"><div><p class="eyebrow">CONTROLE FINANCEIRO</p><h2>Gastos da viagem</h2></div><a class="action-link" href="gastos.php?cidade=<?= (int)$selected['id'] ?>">Registrar gasto</a></div>
     <div class="expense-overview">
-      <div class="total-box"><small>Total pago</small><strong>€ <?= number_format($tripTotal, 2, ',', '.') ?></strong></div>
-      <div class="total-box planned"><small>Orçamento previsto</small><strong>€ <?= number_format($plannedTotal, 2, ',', '.') ?></strong></div>
-      <div class="category-chips"><?php foreach ($expenseSummary as $summary): ?><span><?= h($summary['category']) ?><strong>€ <?= number_format((float)$summary['total'], 2, ',', '.') ?></strong></span><?php endforeach; ?></div>
+      <div class="total-box"><small>Total pago</small><strong>$ <?= number_format($tripTotal, 2, '.', ',') ?></strong></div>
+      <div class="total-box planned"><small>Orçamento previsto</small><strong>$ <?= number_format($plannedTotal, 2, '.', ',') ?></strong></div>
+      <div class="category-chips"><?php foreach ($expenseSummary as $summary): ?><span><?= h($summary['category']) ?><strong>$ <?= number_format((float)$summary['total'], 2, '.', ',') ?></strong></span><?php endforeach; ?></div>
     </div>
     <?php if ($expenses): ?><div class="expense-table-wrap"><table class="expense-table"><thead><tr><th>Gasto</th><th>Tipo</th><th>Data</th><th>Valor</th></tr></thead><tbody>
-      <?php foreach ($expenses as $expense): ?><tr><td><?= h($expense['name']) ?> <small class="status <?= h($expense['status']) ?>"><?= $expense['status']==='paid'?'Pago':'Previsto' ?></small></td><td><span class="category-label"><?= h($expense['category']) ?></span></td><td><?= date('d/m/Y', strtotime($expense['expense_date'])) ?></td><td class="money">€ <?= number_format((float)$expense['amount_eur'], 2, ',', '.') ?></td></tr><?php endforeach; ?>
+      <?php foreach ($expenses as $expense): ?><tr><td><?= h($expense['name']) ?> <small class="status <?= h($expense['status']) ?>"><?= $expense['status']==='paid'?'Pago':'Previsto' ?></small></td><td><span class="category-label"><?= h($expense['category']) ?></span></td><td><?= date('d/m/Y', strtotime($expense['expense_date'])) ?></td><td class="money">$ <?= number_format((float)$expense['amount_usd'], 2, '.', ',') ?></td></tr><?php endforeach; ?>
     </tbody></table></div><?php else: ?><div class="empty-state"><strong>Nenhum gasto em <?= h($selected['name']) ?>.</strong><p>Os valores registrados serão somados automaticamente.</p></div><?php endif; ?>
   </section>
   <?php else: ?><div class="empty">Nenhuma cidade cadastrada.</div><?php endif; ?>
