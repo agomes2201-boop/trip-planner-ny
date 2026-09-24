@@ -154,6 +154,6 @@ function linkButton(?string $url, string $label): string {
 </main>
 
 <footer><span>Início da viagem: 09/06/2027</span><nav><a href="admin.php">Cidades e trajetos</a><a href="passeios.php">Passeios</a><a href="gastos.php">Registrar gasto</a><a href="resumo-gastos.php">Resumo geral</a></nav></footer>
-<script src="assets/app.js"></script>
+<script src="assets/app.js?v=20270609"></script>
 </body>
 </html>
