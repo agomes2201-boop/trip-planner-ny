@@ -51,7 +51,7 @@ function linkButton(?string $url, string $label): string {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#092b3c">
-  <title>Planejador de viagem · Europa 2026</title>
+  <title>Planejador de viagem · NY 2027</title>
   <link rel="stylesheet" href="assets/style.css?v=5">
   <link rel="stylesheet" href="assets/features.css">
   <link rel="stylesheet" href="assets/v3.css">
